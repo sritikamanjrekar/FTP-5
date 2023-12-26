@@ -469,12 +469,8 @@
     <div class="model-viewer-container">
 
         <!-- Model viewer element for displaying 3D content -->
-        <model-viewer src="laptop (3).glb" <!-- Source file for the 3D model -->
-            ar ar-modes="webxr scene-viewer quick-look" <!-- Augmented Reality (AR) modes supported -->
-            camera-controls <!-- Enables user control over the camera -->
-            poster="poster.webp" <!-- Poster image displayed before the model loads -->
-            shadow-intensity="1" <!-- Intensity of shadows cast by the model -->
-            id="FtpClientLaptop"> <!-- Unique identifier for the model viewer -->
+        <model-viewer src="laptop (3).glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+            poster="poster.webp" shadow-intensity="1" id="FtpClientLaptop">
 
             <!-- Button element with class 'Hotspot transparent-button' placed in a specific slot -->
             <button class="Hotspot transparent-button" slot="hotspot-3"
@@ -606,7 +602,7 @@
     display: none;
     
 
-div - id="fileName"
+    div - id="fileName"
     -->
 
     <model-viewer src="packet recieve.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
@@ -673,58 +669,59 @@ div - id="fileName"
     <div style="display: flex;">
 
         <!-- Model viewer container with ID 'additionalContent' and display set to none -->
-        <div class="model-viewer-container" id="additionalContent" style="display:none; width: 40%; margin: 10px;">
-
+        <div class="model-viewer-container" id="additionalContent" style="display:none; 
+            width: 40%;margin: 10px;">
             <!-- Image element displaying the FileZilla UI model with ID 'FilezillaUiModel' -->
             <img src="filezilla.jpg" id="FilezillaUiModel" width="100%" height="100%" style="cursor: pointer;">
+
             <!-- Image element with inline styling and cursor style -->
 
         </div>
         <!-- End of model viewer container -->
 
+        <!-- </div> -->
+       
+
+
+
+        <!-- File Upload Button -->
+        <!-- Input element for file selection with ID 'fileInput' and display set to none -->
+        <input type="file" id="fileInput" style="display: none;">
+        <!-- End of file input element -->
+
+        <!-- Button element with ID 'additionalContent1' for file selection and upload -->
+        <button id="additionalContent1" style="display:none;height:50%;" onclick="uploadFile()"
+            class="btn btn-outline-danger btn-sm"><b>SELECT FILE</b></button>
+        &nbsp;&nbsp;&nbsp;&nbsp; <!-- Non-breaking spaces for visual separation -->
+        <!-- Button element for selecting and uploading files with inline styling and click event handler -->
+
+
+
+        <!-- Heading element with ID 'additionalContent2' and display set to none -->
+        <h6 id="additionalContent2" style="display: none;">Drag Your Local File inside FileZilla server:</h6>
+        &nbsp;&nbsp;&nbsp;&nbsp; <!-- Non-breaking spaces for visual separation -->
+
+        <!-- End of heading element -->
+
+
+        <!-- Container div with ID 'additionalContent3' and display set to none -->
+        <div id="additionalContent3" style="display: none;">
+
+            <!-- Container div for dropping files with ID 'getData' and drag-and-drop event handlers -->
+            <div id="getData" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+
+            <!-- Image element with ID 'dragData' for dragging files, draggable, and drag event handler -->
+            <img id="dragData" draggable="true" ondragstart="drag(event)" width="180" height="180">
+            <!-- End of image element -->
+
+        </div>
+        <!-- End of container div -->
+
+
+    </div><!-- End of flex container -->
+
     </div>
-    <!-- End of flex container -->
-
-
-
-    <!-- File Upload Button -->
-    <!-- Input element for file selection with ID 'fileInput' and display set to none -->
-<input type="file" id="fileInput" style="display: none;">
-<!-- End of file input element -->
-
-<!-- Button element with ID 'additionalContent1' for file selection and upload -->
-<button id="additionalContent1" style="display:none;height:50%;" onclick="uploadFile()"
-    class="btn btn-outline-danger btn-sm"><b>SELECT FILE</b></button>
-<!-- Button element for selecting and uploading files with inline styling and click event handler -->
-
-&nbsp;&nbsp;&nbsp;&nbsp; <!-- Non-breaking spaces for visual separation -->
-
-<!-- Heading element with ID 'additionalContent2' and display set to none -->
-<h6 id="additionalContent2" style="display: none;">Drag Your Local File inside FileZilla server:</h6>
-<!-- End of heading element -->
-
-&nbsp;&nbsp;&nbsp;&nbsp; <!-- Non-breaking spaces for visual separation -->
-
-<!-- Container div with ID 'additionalContent3' and display set to none -->
-<div id="additionalContent3" style="display: none;">
-
-    <!-- Container div for dropping files with ID 'getData' and drag-and-drop event handlers -->
-    <div id="getData" ondrop="drop(event)" ondragover="allowDrop(event)">
-    </div>
-
-    <!-- Image element with ID 'dragData' for dragging files, draggable, and drag event handler -->
-    <img id="dragData" draggable="true" ondragstart="drag(event)" width="180" height="180">
-    <!-- End of image element -->
-
-</div>
-<!-- End of container div -->
-
-
-
-
-    <!-- </div>
-
-    </div> -->
 
 
 
@@ -736,324 +733,324 @@ div - id="fileName"
 
 
         // Function to handle the click event on the browser image
-function handleBrowserImageClick() {
+        function handleBrowserImageClick() {
 
-// Prompt user for FTP Server IP Address
-const userInput = prompt("Enter FTP Server IP Address connect to server:");
+            // Prompt user for FTP Server IP Address
+            const userInput = prompt("Enter FTP Server IP Address connect to server:");
 
-// Check if user input is not null and matches the expected FTP Server IP Address
-if (userInput !== null && userInput == 'ftp://10.10.10.2') {
+            // Check if user input is not null and matches the expected FTP Server IP Address
+            if (userInput !== null && userInput == 'ftp://10.10.10.2') {
 
-    // Log the user input and display a connection alert
-    console.log(userInput);
-    alert("You are connected to FTP Server: " + userInput);
+                // Log the user input and display a connection alert
+                console.log(userInput);
+                alert("You are connected to FTP Server: " + userInput);
 
-    // Check if a file is present
-    if (file) {
-        // Log file details
-        console.log(file.name);
-        console.log(file.size);
+                // Check if a file is present
+                if (file) {
+                    // Log file details
+                    console.log(file.name);
+                    console.log(file.size);
 
-        // Show the download link and set its href attribute
-        // Display file name and size in the link text
+                    // Show the download link and set its href attribute
+                    // Display file name and size in the link text
 
-        // After file upload is initiated, make the model viewer visible
-        var modelViewer = document.getElementById('receiveFileModel');
-        modelViewer.style.display = 'block';
+                    // After file upload is initiated, make the model viewer visible
+                    var modelViewer = document.getElementById('receiveFileModel');
+                    modelViewer.style.display = 'block';
 
-        // Update the content of the div with the file name
-        var fileNameElement = document.getElementById('RfileName');
-        fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
+                    // Update the content of the div with the file name
+                    var fileNameElement = document.getElementById('RfileName');
+                    fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
 
-        // Start the animation on the #receiveFileModel element
-        var receiveFileModelElement = document.getElementById('receiveFileModel');
-        receiveFileModelElement.classList.add('moveLeftAndDownAnimation');
+                    // Start the animation on the #receiveFileModel element
+                    var receiveFileModelElement = document.getElementById('receiveFileModel');
+                    receiveFileModelElement.classList.add('moveLeftAndDownAnimation');
 
-        // Set a timeout to display the download link and text after 30 seconds
-        setTimeout(function () {
-            displayDownloadLink();
-        }, 30000);
+                    // Set a timeout to display the download link and text after 30 seconds
+                    setTimeout(function () {
+                        displayDownloadLink();
+                    }, 30000);
 
-        // Add an event listener for the animation end
-        receiveFileModelElement.addEventListener('animationend', function () {
-            // Display the download link and text after the animation is completed
-            displayDownloadLink();
-        });
+                    // Add an event listener for the animation end
+                    receiveFileModelElement.addEventListener('animationend', function () {
+                        // Display the download link and text after the animation is completed
+                        displayDownloadLink();
+                    });
 
-    } else {
-        // Log and alert if no file is present
-        console.log("no file");
-        alert("There is no file uploaded on FTP Server yet.")
-    }
+                } else {
+                    // Log and alert if no file is present
+                    console.log("no file");
+                    alert("There is no file uploaded on FTP Server yet.")
+                }
 
-} else {
-    // Alert for an invalid IP Address and prompt for correct input
-    alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
-    anotherFunction(); // Assuming 'anotherFunction()' is defined elsewhere
+            } else {
+                // Alert for an invalid IP Address and prompt for correct input
+                alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
+                anotherFunction(); // Assuming 'anotherFunction()' is defined elsewhere
 
-}
+            }
 
-}
+        }
 
         // Function to display the download link with file details
-function displayDownloadLink() {
-    // Set the text content of the download link with file name and size
-    downloadLink.textContent = `Download File ${file.name} (${formatFileSize(file.size)})`;
+        function displayDownloadLink() {
+            // Set the text content of the download link with file name and size
+            downloadLink.textContent = `Download File ${file.name} (${formatFileSize(file.size)})`;
 
-    // Make the download link visible
-    downloadLink.style.display = 'inline';
-}
+            // Make the download link visible
+            downloadLink.style.display = 'inline';
+        }
 
-// Function to format file size in a human-readable format
-function formatFileSize(bytes) {
-    // Array of size units for formatting
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        // Function to format file size in a human-readable format
+        function formatFileSize(bytes) {
+            // Array of size units for formatting
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
-    // Return '0 Byte' if file size is zero
-    if (bytes == 0) return '0 Byte';
+            // Return '0 Byte' if file size is zero
+            if (bytes == 0) return '0 Byte';
 
-    // Calculate the appropriate size unit and round the result
-    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-}
+            // Calculate the appropriate size unit and round the result
+            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+        }
 
 
 
 
 
         // Function to set the visibility of hotspots
-function setHotspotVisibility(visibility) {
-    // Select all elements with class 'Hotspot'
-    const hotspots = document.querySelectorAll('.Hotspot');
-    
-    // Iterate through each hotspot and set visibility attribute based on the parameter
-    hotspots.forEach(hotspot => {
-        hotspot.setAttribute('data-visibility-attribute', visibility ? 'visible' : 'hidden');
-    });
-}
+        function setHotspotVisibility(visibility) {
+            // Select all elements with class 'Hotspot'
+            const hotspots = document.querySelectorAll('.Hotspot');
 
-// Use a variable to track whether "Hello" has been displayed
-var helloDisplayed = false;
+            // Iterate through each hotspot and set visibility attribute based on the parameter
+            hotspots.forEach(hotspot => {
+                hotspot.setAttribute('data-visibility-attribute', visibility ? 'visible' : 'hidden');
+            });
+        }
 
-// Function to add "Hello" text and display additional content
-function addHelloText() {
-    // Check if "Hello" has not been displayed yet
-    if (!helloDisplayed) {
-        // Make the additional content container visible
-        document.getElementById('additionalContent').style.display = 'inline-block';
+        // Use a variable to track whether "Hello" has been displayed
+        var helloDisplayed = false;
 
-        // Update the variable to indicate that "Hello" has been displayed
-        helloDisplayed = true;
+        // Function to add "Hello" text and display additional content
+        function addHelloText() {
+            // Check if "Hello" has not been displayed yet
+            if (!helloDisplayed) {
+                // Make the additional content container visible
+                document.getElementById('additionalContent').style.display = 'inline-block';
 
-        // Display an alert message with instructions
-        alert("In the future, scroll down and click on the FileZilla Application UI model which says that FileZilla is a free and open-source, cross-platform FTP application.");
-    }
-}
+                // Update the variable to indicate that "Hello" has been displayed
+                helloDisplayed = true;
+
+                // Display an alert message with instructions
+                alert("In the future, scroll down and click on the FileZilla Application UI model which says that FileZilla is a free and open-source, cross-platform FTP application.");
+            }
+        }
 
 
         // Use a variable to track whether options have been displayed
-var OptionsDisplayed = false;
+        var OptionsDisplayed = false;
 
-// Function to trigger the file input click
-function uploadFile() {
-    // Trigger the click event of the file input element
-    document.getElementById('fileInput').click();
-}
+        // Function to trigger the file input click
+        function uploadFile() {
+            // Trigger the click event of the file input element
+            document.getElementById('fileInput').click();
+        }
 
-// Function to initiate the download of a dummy text file
-function downloadFile() {
-    // For demonstration purposes, create a dummy text file content
-    var text = "This is a sample text file content.";
-    
-    // Create a Blob with the text content and specify the MIME type
-    var blob = new Blob([text], { type: 'text/plain' });
+        // Function to initiate the download of a dummy text file
+        function downloadFile() {
+            // For demonstration purposes, create a dummy text file content
+            var text = "This is a sample text file content.";
 
-    // Create an anchor element to facilitate the file download
-    var a = document.createElement('a');
-    
-    // Set the href attribute with a URL created from the Blob
-    a.href = window.URL.createObjectURL(blob);
+            // Create a Blob with the text content and specify the MIME type
+            var blob = new Blob([text], { type: 'text/plain' });
 
-    // Set the desired filename for the downloaded file
-    a.download = 'sample.txt';
+            // Create an anchor element to facilitate the file download
+            var a = document.createElement('a');
 
-    // Append the anchor element to the document body
-    document.body.appendChild(a);
+            // Set the href attribute with a URL created from the Blob
+            a.href = window.URL.createObjectURL(blob);
 
-    // Simulate a click on the anchor element to initiate the download
-    a.click();
+            // Set the desired filename for the downloaded file
+            a.download = 'sample.txt';
 
-    // Remove the anchor element from the document body
-    document.body.removeChild(a);
-}
+            // Append the anchor element to the document body
+            document.body.appendChild(a);
+
+            // Simulate a click on the anchor element to initiate the download
+            a.click();
+
+            // Remove the anchor element from the document body
+            document.body.removeChild(a);
+        }
         // Variable to store the download link element
-var downloadLink;
+        var downloadLink;
 
-// Variable to store the selected file
-var file;
+        // Variable to store the selected file
+        var file;
 
-// Event listener for file input change
-document.getElementById('fileInput').addEventListener('change', function (event) {
-    // Get the selected file from the input event
-    file = event.target.files[0];
+        // Event listener for file input change
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            // Get the selected file from the input event
+            file = event.target.files[0];
 
-    // Log the selected file name to the console
-    console.log('File selected:', file.name);
+            // Log the selected file name to the console
+            console.log('File selected:', file.name);
 
-    // Update the content of the div with the file name
-    var fileNameElement = document.getElementById('fileName');
-    fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
+            // Update the content of the div with the file name
+            var fileNameElement = document.getElementById('fileName');
+            fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
 
-    // Update the image source to the selected file
-    var imgElement = document.getElementById('dragData');
-    imgElement.src = window.URL.createObjectURL(file);
+            // Update the image source to the selected file
+            var imgElement = document.getElementById('dragData');
+            imgElement.src = window.URL.createObjectURL(file);
 
-    // Show the download link and set its href attribute
-    downloadLink = document.getElementById('downloadLink');
-    // downloadLink.style.display = 'inline'; // Uncomment if you want to display the link immediately
-    downloadLink.href = window.URL.createObjectURL(file);
-    downloadLink.download = file.name;
-});
+            // Show the download link and set its href attribute
+            downloadLink = document.getElementById('downloadLink');
+            // downloadLink.style.display = 'inline'; // Uncomment if you want to display the link immediately
+            downloadLink.href = window.URL.createObjectURL(file);
+            downloadLink.download = file.name;
+        });
 
-// Function to format file size in a human-readable format
-function formatFileSize(bytes) {
-    // Array of size units for formatting
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        // Function to format file size in a human-readable format
+        function formatFileSize(bytes) {
+            // Array of size units for formatting
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
-    // Return '0 Byte' if file size is zero
-    if (bytes == 0) return '0 Byte';
+            // Return '0 Byte' if file size is zero
+            if (bytes == 0) return '0 Byte';
 
-    // Calculate the appropriate size unit and round the result to two decimal places
-    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-}
+            // Calculate the appropriate size unit and round the result to two decimal places
+            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+        }
 
 
 
 
         // Event listener for file input change
         //  document.getElementById('fileInput').addEventListener('change', handleFileSelection);
-// Get the FilezillaUiModel element by its ID
-const FilezillaUiModel = document.getElementById("FilezillaUiModel");
+        // Get the FilezillaUiModel element by its ID
+        const FilezillaUiModel = document.getElementById("FilezillaUiModel");
 
-// Add click event listener to the FilezillaUiModel element
-FilezillaUiModel.addEventListener("click", () => {
-    // Prompt user for Server IP Address to connect to FTP server
-    const userInput = prompt("Enter Server IP Address to connect to FTP server:");
+        // Add click event listener to the FilezillaUiModel element
+        FilezillaUiModel.addEventListener("click", () => {
+            // Prompt user for Server IP Address to connect to FTP server
+            const userInput = prompt("Enter Server IP Address to connect to FTP server:");
 
-    // Check if user input is not null and matches the expected FTP Server IP Address
-    if (userInput !== null && userInput == 'ftp://10.10.10.2') {
-        // Log the user input
-        console.log(userInput);
+            // Check if user input is not null and matches the expected FTP Server IP Address
+            if (userInput !== null && userInput == 'ftp://10.10.10.2') {
+                // Log the user input
+                console.log(userInput);
 
-        // Display a connection alert
-        alert("You are connected to FTP Server: " + userInput);
+                // Display a connection alert
+                alert("You are connected to FTP Server: " + userInput);
 
-        // Make additional content elements visible
-        document.getElementById('additionalContent1').style.display = 'inline-block';
-        document.getElementById('additionalContent2').style.display = 'inline-block';
-        document.getElementById('additionalContent3').style.display = 'inline-block';
+                // Make additional content elements visible
+                document.getElementById('additionalContent1').style.display = 'inline-block';
+                document.getElementById('additionalContent2').style.display = 'inline-block';
+                document.getElementById('additionalContent3').style.display = 'inline-block';
 
-        // Note: OptionsDisplayed variable is commented out as it is not defined in the provided code
+                // Note: OptionsDisplayed variable is commented out as it is not defined in the provided code
 
-    } else {
-        // Alert for an invalid IP Address and prompt for correct input
-        alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
+            } else {
+                // Alert for an invalid IP Address and prompt for correct input
+                alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
 
-        // Call another function (assuming 'anotherFunction()' is defined elsewhere)
-        anotherFunction();
-    }
-});
+                // Call another function (assuming 'anotherFunction()' is defined elsewhere)
+                anotherFunction();
+            }
+        });
 
 
         // Function to handle the case when the input doesn't match
-function anotherFunction() {
-    // Log a message indicating that the input doesn't match
-    console.log("Input doesn't match. Calling another function.");
+        function anotherFunction() {
+            // Log a message indicating that the input doesn't match
+            console.log("Input doesn't match. Calling another function.");
 
-    // Prompt user for Server IP Address to connect to FTP server
-    const userInput = prompt("Enter Server IP Address to connect to FTP server:");
+            // Prompt user for Server IP Address to connect to FTP server
+            const userInput = prompt("Enter Server IP Address to connect to FTP server:");
 
-    // Check if user input is not null and matches the expected FTP Server IP Address
-    if (userInput !== null && userInput == 'ftp://10.10.10.2') {
-        // Log the user input
-        console.log(userInput);
+            // Check if user input is not null and matches the expected FTP Server IP Address
+            if (userInput !== null && userInput == 'ftp://10.10.10.2') {
+                // Log the user input
+                console.log(userInput);
 
-        // Display a connection alert
-        alert("You are connected to FTP Server: " + userInput);
+                // Display a connection alert
+                alert("You are connected to FTP Server: " + userInput);
 
-        // Make additional content elements visible
-        document.getElementById('additionalContent1').style.display = 'inline-block';
-        document.getElementById('additionalContent2').style.display = 'inline-block';
-        document.getElementById('additionalContent3').style.display = 'inline-block';
+                // Make additional content elements visible
+                document.getElementById('additionalContent1').style.display = 'inline-block';
+                document.getElementById('additionalContent2').style.display = 'inline-block';
+                document.getElementById('additionalContent3').style.display = 'inline-block';
 
-    } else {
-        // Alert for an invalid IP Address and prompt for correct input
-        alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
+            } else {
+                // Alert for an invalid IP Address and prompt for correct input
+                alert("Invalid IP Address: " + userInput + " (Enter to connect: ftp://10.10.10.2)");
 
-        // Call the function recursively (assuming 'anotherFunction()' is defined elsewhere)
-        anotherFunction();
-    }
-}
+                // Call the function recursively (assuming 'anotherFunction()' is defined elsewhere)
+                anotherFunction();
+            }
+        }
 
 
 
-       // Function to start the file uploading process
-function startUploadingFile() {
-    // Assuming your file upload logic goes here
+        // Function to start the file uploading process
+        function startUploadingFile() {
+            // Assuming your file upload logic goes here
 
-    // After file upload is initiated, make the model viewer visible
-    var modelViewer = document.getElementById('sendFileModel');
-    modelViewer.style.display = 'block';
-}
+            // After file upload is initiated, make the model viewer visible
+            var modelViewer = document.getElementById('sendFileModel');
+            modelViewer.style.display = 'block';
+        }
 
         function startDownloadingFile() {
-           
- // Note: The implementation details for downloading a file are missing in the provided code
+
+            // Note: The implementation details for downloading a file are missing in the provided code
         }
 
         // Event listener for the 'DOMContentLoaded' event
-document.addEventListener('DOMContentLoaded', function () {
-    // Get the 'sendFileModel' element by its ID
-    var sendFileModelElement = document.getElementById('sendFileModel');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the 'sendFileModel' element by its ID
+            var sendFileModelElement = document.getElementById('sendFileModel');
 
-    // Add event listener for the 'animationend' event on 'sendFileModel' element
-    sendFileModelElement.addEventListener('animationend', function () {
-        // This will be triggered after the animation completes (after 4 seconds in this case)
-        alert('File Uploaded Successfully!');
-    });
-});
-
-
-
-       // Get the 'receiveFileModel' element by its ID
-const receiveFileModel = document.getElementById('receiveFileModel');
-
-// Add an event listener to detect when the animation ends
-receiveFileModel.addEventListener('animationend', () => {
-    // Animation is completed, show alert and make the model viewer invisible
-    alert('File Received Successfully With Link To Download!');
-
-    // Make the 'receiveFileModel' element invisible
-    receiveFileModel.style.display = 'none';
-});
+            // Add event listener for the 'animationend' event on 'sendFileModel' element
+            sendFileModelElement.addEventListener('animationend', function () {
+                // This will be triggered after the animation completes (after 4 seconds in this case)
+                alert('File Uploaded Successfully!');
+            });
+        });
 
 
+
+        // Get the 'receiveFileModel' element by its ID
+        const receiveFileModel = document.getElementById('receiveFileModel');
+
+        // Add an event listener to detect when the animation ends
+        receiveFileModel.addEventListener('animationend', () => {
+            // Animation is completed, show alert and make the model viewer invisible
+            alert('File Received Successfully With Link To Download!');
+
+            // Make the 'receiveFileModel' element invisible
+            receiveFileModel.style.display = 'none';
+        });
 
 
 
 
 
-// Closing script tag for inline JavaScript code
-</script>
 
-<!-- Includes a JavaScript module for 3D model viewing -->
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-<!-- Includes the Bootstrap JavaScript library from a CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+        // Closing script tag for inline JavaScript code
+    </script>
+
+    <!-- Includes a JavaScript module for 3D model viewing -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Includes the Bootstrap JavaScript library from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
 
 </body>
