@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FTP Packet Flow in AR</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #ar-container {
+      position: relative;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .packet {
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background-color: #3498db;
+      border-radius: 5px;
+      cursor: pointer;
+      animation: flowAnimation 5s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="ar-container">
+    <!-- Packets will be dynamically created here -->
+  </div>
+
+  <script>
+    const arContainer = document.getElementById('ar-container');
+    const fileSizeKB = 200; // Replace with the actual file size in KB
+
+    function createPacket(index) {
+      const packet = document.createElement('div');
+      packet.className = 'packet';
+      packet.dataset.packetIndex = index; // Store the index as a data attribute
+      packet.dataset.sourceIP = getRandomIP(); // Generate random source IP (replace with your logic)
+      packet.dataset.destinationIP = getRandomIP(); // Generate random destination IP (replace with your logic)
+      packet.style.top = `${index * 20}px`; // Adjust spacing based on index
+
+      // Add click event to show details
+      packet.onclick = function() {
+        showPacketDetails(packet);
+      };
+
+      arContainer.appendChild(packet);
+    }
+
+    function showPacketDetails(packet) {
+      const packetIndex = packet.dataset.packetIndex;
+      const sourceIP = packet.dataset.sourceIP;
+      const destinationIP = packet.dataset.destinationIP;
+
+      alert(`Packet Details:\nIndex: ${packetIndex}\nSource: ${sourceIP}\nDestination: ${destinationIP}\nSize: 10KB`);
+      // Replace the alert with your preferred method to display details in AR
+    }
+
+    function getRandomIP() {
+      // Generate a random IP address (for demonstration purposes)
+      return Array.from({ length: 4 }, () => Math.floor(Math.random() * 256)).join('.');
+    }
+
+    function simulateFTPPacketFlow() {
+      const numberOfPackets = Math.ceil(fileSizeKB / 10); // Assuming each packet represents 10KB
+      for (let i = 0; i < numberOfPackets; i++) {
+        createPacket(i);
+      }
+    }
+
+    simulateFTPPacketFlow();
+  </script>
+</body>
+</html>

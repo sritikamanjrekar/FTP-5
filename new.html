@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web AR</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* CSS for positioning the model viewer elements */
+        #model1 {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        .connector {
+            width: 35%; /* Full width for the horizontal line */
+            height: 1px; /* Adjust the height of the connector line */
+            background-color: black; /* Adjust the color as needed */
+            position: absolute;
+            margin-left: 23%;
+            top: 120px; /* Adjust the top position to separate it from the models */
+        }
+
+        #model3 {
+            position: absolute;
+            top: 50px;
+            left: 450px;
+        }
+
+        @keyframes moveLeftToRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+           
+        }
+
+        #model4 {
+            animation: moveLeftToRight 5s linear infinite; /* Adjust the duration and timing function as needed */
+        }
+    </style>
+</head>
+<body>
+
+   
+        <!-- Initial content -->
+        <p>Initial Content</p>
+   
+
+    <div style="display: flex; align-items: flex-start;">
+        <model-viewer
+            id="model1"
+            src="clouds.glb"
+            alt="Model 1"
+            camera-controls
+            auto-rotate
+            ar
+        ></model-viewer>
+
+        <div class="connector"></div>
+
+        <model-viewer
+            id="model3"
+            src="server.glb"
+            alt="Model 3"
+            camera-controls
+            auto-rotate
+            ar
+        ></model-viewer>
+
+        <model-viewer
+            id="model4"
+            src="server.glb"
+            alt="Model 3"
+            camera-controls
+            auto-rotate
+            ar
+        ></model-viewer>
+
+        <model-viewer
+        id="model5"
+        src="laptop (2).glb"
+        alt="Model 5"
+        camera-controls
+        auto-rotate
+        ar
+    ></model-viewer>
+    <button id="changeModelButton">Change Model</button>
+
+    </div>
+
+    <!-- Add a text field and a button -->
+    <div>
+        <input type="text" id="text-input" placeholder="Enter text">
+        <button id="click-button">Click Me</button>
+    </div>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <script>
+        // Get references to the model-viewer elements
+        const model1 = document.getElementById("model1");
+        const model3 = document.getElementById("model3");
+
+        // Get references to the button and text input
+        const button = document.getElementById("click-button");
+        const textInput = document.getElementById("text-input");
+
+        // Add click event listeners to each model
+        model1.addEventListener("click", () => {
+            const userInput = prompt("Enter text for Model 1:");
+            if (userInput !== null) {
+                textInput.value = userInput;
+            }
+        });
+
+        model3.addEventListener("click", () => {
+            const userInput = prompt("Enter text for Model 3:");
+            if (userInput !== null) {
+                textInput.value = userInput;
+            }
+        });
+
+        // Add a click event listener to the button
+        button.addEventListener("click", () => {
+            alert("Button clicked with text: " + textInput.value);
+        });
+
+
+        function changeContent() {
+        const model4 = document.getElementById('model4');
+
+        // Array of content to be cycled through
+        const contentArray = [
+            '<p>Content 1</p>',
+            '<p>Content 2</p>',
+            '<p>Content 3</p>'
+            // Add more content items as needed
+        ];
+
+        let currentIndex = 0;
+
+        setInterval(() => {
+            // Update content
+            model4.innerHTML = contentArray[currentIndex];
+
+            // Increment index for the next content
+            currentIndex = (currentIndex + 1) % contentArray.length;
+        }, 5000); // Change content every 5 seconds
+    }
+
+    // Call the function to start the content change
+    changeContent();
+       
+    </script>
+     <script src="script.js"></script>
+</body>
+</html>
