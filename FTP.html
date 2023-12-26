@@ -316,7 +316,7 @@
             /* Add a smooth transition effect */
 
             /* Apply the 'rainbow' animation with a duration of 3s and infinite repeat */
-            animation: rainbow 3s infinite;
+            animation: rainbow 3s infinite; /* Add rainbow animation */
             /* Add rainbow animation */
         }
 
@@ -390,39 +390,39 @@
 
     <script>
         // Function to allow dropping items into a specified area
-        function allowDrop(event) {
+        function allowDrop(even) {
             // Prevent the default behavior to enable drop
-            event.preventDefault();
+            even.preventDefault();
         }
 
         // Function to initiate drag when an item is dragged
-        function drag(event) {
+        function drag(even) {
             // Set the data to be transferred during drag (in this case, the element's ID)
-            event.dataTransfer.setData("text", event.target.id);
-        }
+            even.dataTransfer.setData("text", even.target.id);
+                }
 
         // Function to handle the drop event
-        function drop(event) {
-            // Prevent the default behavior to enable drop
-            event.preventDefault();
+        function drop(even) {            // Prevent the default behavior to enable drop
+            even.preventDefault();
 
             // Retrieve the data transferred during drag (in this case, the element's ID)
-            var fetchData = event.dataTransfer.getData("text");
+            var fetchData = even.dataTransfer.getData("text");
 
             // Append the dragged element to the drop area
-            event.target.appendChild(document.getElementById(fetchData));
+            even.target.appendChild(document.getElementById(fetchData));
 
             // Get the drop area element
             var dropArea = document.getElementById(fetchData);
 
             // Check if the drop area already has child elements
             if (dropArea.hasChildNodes()) {
-                // Log a message if something is already in the drop area
-                console.log("Something is already in the drop area");
-                startUploadingFile();
-            } else {
                 // Log a message if something is not in the drop area
                 console.log("Something is not there in the drop area");
+                
+            } else {
+                // Log a message if something is in the drop area
+                console.log("Something is already in the drop area");
+                startUploadingFile();;
             }
         }
 
@@ -760,7 +760,7 @@
 
                     // Update the content of the div with the file name
                     var fileNameElement = document.getElementById('RfileName');
-                    fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
+                    fileNameElement.innerHTML = file.name +' '+ formatFileSize(file.size);
 
                     // Start the animation on the #receiveFileModel element
                     var receiveFileModelElement = document.getElementById('receiveFileModel');
@@ -899,7 +899,7 @@
 
             // Update the content of the div with the file name
             var fileNameElement = document.getElementById('fileName');
-            fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
+            fileNameElement.innerHTML = file.name +' '+ formatFileSize(file.size);
 
             // Update the image source to the selected file
             var imgElement = document.getElementById('dragData');
@@ -912,21 +912,6 @@
             downloadLink.download = file.name;
         });
 
-        // Function to format file size in a human-readable format
-        function formatFileSize(bytes) {
-            // Array of size units for formatting
-            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-
-            // Return '0 Byte' if file size is zero
-            if (bytes == 0) return '0 Byte';
-
-            // Calculate the appropriate size unit and round the result to two decimal places
-            const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-        }
-
-
-
 
         // Event listener for file input change
         //  document.getElementById('fileInput').addEventListener('change', handleFileSelection);
@@ -936,12 +921,12 @@
         // Add click event listener to the FilezillaUiModel element
         FilezillaUiModel.addEventListener("click", () => {
             // Prompt user for Server IP Address to connect to FTP server
-            const userInput = prompt("Enter Server IP Address to connect to FTP server:");
+            const userInput = prompt("Enter Server IP Address connect to FTP server:");
 
             // Check if user input is not null and matches the expected FTP Server IP Address
             if (userInput !== null && userInput == 'ftp://10.10.10.2') {
                 // Log the user input
-                console.log(userInput);
+                console.log(userInput)
 
                 // Display a connection alert
                 alert("You are connected to FTP Server: " + userInput);
@@ -950,6 +935,7 @@
                 document.getElementById('additionalContent1').style.display = 'inline-block';
                 document.getElementById('additionalContent2').style.display = 'inline-block';
                 document.getElementById('additionalContent3').style.display = 'inline-block';
+
 
                 // Note: OptionsDisplayed variable is commented out as it is not defined in the provided code
 
@@ -969,7 +955,7 @@
             console.log("Input doesn't match. Calling another function.");
 
             // Prompt user for Server IP Address to connect to FTP server
-            const userInput = prompt("Enter Server IP Address to connect to FTP server:");
+            const userInput = prompt("Enter Server IP Address connect to server:");
 
             // Check if user input is not null and matches the expected FTP Server IP Address
             if (userInput !== null && userInput == 'ftp://10.10.10.2') {
@@ -983,6 +969,7 @@
                 document.getElementById('additionalContent1').style.display = 'inline-block';
                 document.getElementById('additionalContent2').style.display = 'inline-block';
                 document.getElementById('additionalContent3').style.display = 'inline-block';
+
 
             } else {
                 // Alert for an invalid IP Address and prompt for correct input
@@ -1029,7 +1016,7 @@
         // Add an event listener to detect when the animation ends
         receiveFileModel.addEventListener('animationend', () => {
             // Animation is completed, show alert and make the model viewer invisible
-            alert('File Received Successfully With Link To Download!');
+            alert('File Received Sucessfully With Link To Download!');
 
             // Make the 'receiveFileModel' element invisible
             receiveFileModel.style.display = 'none';
