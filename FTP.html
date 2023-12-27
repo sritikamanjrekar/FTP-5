@@ -316,7 +316,8 @@
             /* Add a smooth transition effect */
 
             /* Apply the 'rainbow' animation with a duration of 3s and infinite repeat */
-            animation: rainbow 3s infinite; /* Add rainbow animation */
+            animation: rainbow 3s infinite;
+            /* Add rainbow animation */
             /* Add rainbow animation */
         }
 
@@ -386,6 +387,40 @@
             color: #000000;
             /* Set the text color on hover */
         }
+
+       
+
+
+
+        /* Styling for the modal */
+    .model  {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      border-radius: 10px; /* Rounded corners */
+      max-width: 400px; /* Set a maximum width if needed */
+    }
+
+    /* Styling for the overlay background */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+     
     </style>
 
     <script>
@@ -399,7 +434,7 @@
         function drag(even) {
             // Set the data to be transferred during drag (in this case, the element's ID)
             even.dataTransfer.setData("text", even.target.id);
-                }
+        }
 
         // Function to handle the drop event
         function drop(even) {            // Prevent the default behavior to enable drop
@@ -418,7 +453,7 @@
             if (dropArea.hasChildNodes()) {
                 // Log a message if something is not in the drop area
                 console.log("Something is not there in the drop area");
-                
+
             } else {
                 // Log a message if something is in the drop area
                 console.log("Something is already in the drop area");
@@ -436,6 +471,7 @@
 <body>
     <!-- Inserts a line break (not visible on the page) -->
     <!-- Start of HTML Document -->
+
     <br> <!-- Line break element -->
 
     <!-- Container div -->
@@ -447,6 +483,8 @@
             <!-- Heading element with text "File Transfer Protocols" -->
             <h1>File Transfer Protocols</h1>
             <!-- Heading element -->
+
+
 
             <br> <!-- Line break element -->
 
@@ -460,10 +498,20 @@
     <!-- End of HTML Document -->
 
     <!-- <div class="model-viewer-container">
-
-       
-
     </div> -->
+
+    
+
+ <!-- Modal HTML -->
+ <div class="model" id="customAlert">
+    <p >Let's Start Transferring File using FTP (File Transfer Protocol) in AR World!! Click on FileZilla FTP Application. To Know IP Addresses of Network Devices click on their names.</p>
+    <button class="btn btn-outline-warning" onclick="closeModal()">Okay</button>
+</div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+
     <!-- Container for the first model-viewer -->
     <!-- Container for the model viewer element with class 'model-viewer-container' -->
     <div class="model-viewer-container">
@@ -472,11 +520,13 @@
         <model-viewer src="laptop (3).glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
             poster="poster.webp" shadow-intensity="1" id="FtpClientLaptop">
 
+            <!-- onclick="alert('IP Address > 192.168.0.3')"  -->
             <!-- Button element with class 'Hotspot transparent-button' placed in a specific slot -->
-            <button class="Hotspot transparent-button" slot="hotspot-3"
+            <button class="Hotspot transparent-button btn" slot="hotspot-3"
                 data-position="10.066504518301514m 69.27750186888898m 718.4284188104473m"
                 data-normal="0m 0.4745439042365091m 0.8802318347753455m" data-visibility-attribute="visible"
-                onclick="alert('IP Address > 192.168.0.3')"> <!-- JavaScript function to display an alert on click -->
+                data-bs-toggle="modal" data-bs-target="#laptop3IpAddress">
+                <!-- JavaScript function to display an alert on click -->
 
                 <!-- Div with class 'HotspotAnnotation' containing annotation text -->
                 <div class="HotspotAnnotation">Windows OS Laptop - FTP Client</div>
@@ -488,6 +538,25 @@
 
     </div>
     <!-- End of container div -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="laptop3IpAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Windows OS Laptop - FTP Client</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    IP Address > 192.168.0.3
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="vertical-line-browser"></div>
@@ -526,59 +595,53 @@
     <div class="model-viewer-container">
         <model-viewer src="router 2.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
             poster="poster.webp" shadow-intensity="1" style="top: -40px;">
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('LED Lights - Lights indicate signal power, internet, and port status to keep users informed.')"
-                slot="hotspot-1" data-position="-81.97326310654489m 12.807105263847163m -69.7434421940822m"
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-1"
+                data-position="-81.97326310654489m 12.807105263847163m -69.7434421940822m"
                 data-normal="-0.2350872000807512m 0.9719089402442203m -0.011270325263702499m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2Led">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>1</b></div>
             </button>
 
-            <button class="Hotspot " style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('Router IP Address > 10.10.10.1')" slot="hotspot-1"
+            <button class="Hotspot " style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-1"
                 data-position="4.619146713285266m 23.29660417842021m -24.130473665273932m"
                 data-normal="0.0017078448797659893m 0.8294415367891209m -0.5585909239459302m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2IPAddress">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>2</b></div>
             </button>
 
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('Antennae - Antennae broadcast wireless signals in your home network.')" slot="hotspot-2"
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-2"
                 data-position="179.0995711956234m 190.63378749244632m -137.70381282278132m"
                 data-normal="0.9429811641888707m -0.25659582201292835m 0.2120026134520792m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2Antennae">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>3</b></div>
             </button>
 
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('Reset Port - Port for resetting router to factory defaults.')" slot="hotspot-4"
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-4"
                 data-position="94.80802277930192m -2.051583201389989m -88.57691547871738m"
                 data-normal="0.9524589367311355m -0.3046669884332552m 7.518845538177253e-8m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2ResetPort">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>4</b></div>
             </button>
 
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('Power Connection - Power adapter port for router connection.')" slot="hotspot-5"
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-5"
                 data-position="93.0271975223528m -9.036092963084773m -42.92367625481142m"
                 data-normal="0.9499894452431723m -0.3122820102507609m 5.598494470146217e-7m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2PowerConnection">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>5</b></div>
             </button>
 
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('WAN/Internet Port - Connect modem or transceiver to link home network to internet.')"
-                slot="hotspot-6" data-position="88.57529082339992m -4.5743943571451195m 7.237066857346441m"
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-6"
+                data-position="88.57529082339992m -4.5743943571451195m 7.237066857346441m"
                 data-normal="9.466578299075506e-13m 0.9999999999998374m -5.706325905294796e-7m"
-                data-visibility-attribute="visible">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#Router2InternetPort">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>6</b></div>
             </button>
 
 
-            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;"
-                onclick="alert('LAN Ports - Ports for wired devices on home network without wireless capability.')"
-                slot="hotspot-7" data-position="80.16649959325824m -4.574379532828555m 92.24591956129082m"
-                data-normal="0m 0.9999999999998374m -5.706306373449653e-7m" data-visibility-attribute="visible">
+            <button class="Hotspot" style="border-radius: 100%;background-color:rgb(89, 255, 0) ;" slot="hotspot-7"
+                data-position="80.16649959325824m -4.574379532828555m 92.24591956129082m"
+                data-normal="0m 0.9999999999998374m -5.706306373449653e-7m" data-visibility-attribute="visible"
+                data-bs-toggle="modal" data-bs-target="#Router2LANPort">
                 <div class="HotspotAnnotation" style="font-size:8px;"><b>7</b></div>
             </button>
 
@@ -586,16 +649,175 @@
 
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="Router2Led" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">LED Lights</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Lights indicate signal power, internet, and port status to keep users informed.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2IPAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Router</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    IP Adress > 10.10.10.1
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2Antennae" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Antennae</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Antennae broadcast wireless signals in your home network.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2ResetPort" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Reset Port</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Port for resetting router to factory defaults.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2PowerConnection" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Power Connection</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Power adapter port for router connection.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2InternetPort" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">WAN/Internet Port</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Connect modem or transceiver to link home network to internet.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Router2LANPort" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">LAN Ports</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Ports for wired devices on home network without wireless capability.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Okay</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="model-viewer-container">
         <model-viewer src="server_racking_system.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
             poster="poster.webp" shadow-intensity="1" id="FtpServer" style="margin-left: 20%;">
-            <button class="Hotspot transparent-button" slot="hotspot-1"
+            <button class="Hotspot transparent-button btn" slot="hotspot-1"
                 data-position="-0.2986763782425904m 1.905029363515141m 0.5064332606660245m"
                 data-normal="7.450818835722137e-7m -0.18521761207126647m 0.9826975303612311m"
-                data-visibility-attribute="visible" onclick="alert('IP Address > ftp://10.10.10.2')">
+                data-visibility-attribute="visible" data-bs-toggle="modal" data-bs-target="#FTPServerModal">
                 <div class="HotspotAnnotation">FTP Server</div>
             </button>
         </model-viewer>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="FTPServerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">FTP Server</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    IP Address > ftp://10.10.10.2
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Okay</button>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- id="sendFileModel"
@@ -609,15 +831,45 @@
         poster="poster.webp" shadow-intensity="1" id="receiveFileModel"
         style="z-index: 1;width: 20%;height: 10%;margin-left: 72%;margin-top: -190px;position: absolute;display: none;">
 
-        <button class="Hotspot transparent-button" slot="hotspot-1"
+        <button class="Hotspot transparent-button btn" slot="hotspot-1"
             data-position="-0.01807796683813881m -0.13234383238683817m 0.15079345864210933m"
-            data-normal="0m -2.220446049250313e-16m 1m" data-visibility-attribute="visible"
-            onclick="alert(
-            'Packet Details:\nVersion (4 bits): Indicates the version of the IP protocol (IPv4 or IPv6).\nIHL (4 bits): Internet Header Length, the number of 32-bit words in the header.\nType of Service (8 bits): Specifies the priority and ECN (Explicit Congestion Notification).\nTotal Length (16 bits): Total length of the IP packet (header + data).\nIdentification (16 bits): Used for fragmentation/reassembly of IP datagrams.\nFlags (3 bits): Control fragmentation (e.g., Don`t Fragment, More Fragments).\nFragment Offset (13 bits): Indicates the position of the fragment in the original datagram.\nTime to Live (8 bits): Limits the time the packet is allowed to traverse the network.\nProtocol (8 bits): Specifies the higher-layer protocol (e.g., TCP, UDP).\nHeader Checksum (16 bits): Error-checking for the header.\nSource IP Address (32 bits): IP address of the sender is 10.10.10.2.\nDestination IP Address (32 bits): IP address of the intended recipient is 192.168.0.3.\nOptions (variable): Optional and may include various information such as timestamp, record route, etc.\nData (Payload): Actual data being transmitted.')">
+            data-normal="0m -2.220446049250313e-16m 1m" data-visibility-attribute="visible" data-bs-toggle="modal"
+            data-bs-target="#packetReceiveModal">
             <div class="HotspotAnnotation" style="font-size: smaller;" id="RfileName">File</div>
         </button>
 
     </model-viewer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="packetReceiveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Packet Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    Version (4 bits): Indicates the version of the IP protocol (IPv4 or IPv6).<br>IHL
+                    (4 bits): Internet Header Length, the number of 32-bit words in the header.<br>Type of Service (8
+                    bits): Specifies the priority and ECN (Explicit Congestion Notification).<br>Total Length (16 bits):
+                    Total length of the IP packet (header + data).<br>Identification (16 bits): Used for
+                    fragmentation/reassembly of IP datagrams.<br>Flags (3 bits): Control fragmentation (e.g., Don`t
+                    Fragment, More Fragments).<br>Fragment Offset (13 bits): Indicates the position of the fragment in
+                    the original datagram.<br>Time to Live (8 bits): Limits the time the packet is allowed to traverse
+                    the network.<br>Protocol (8 bits): Specifies the higher-layer protocol (e.g., TCP, UDP).<br>Header
+                    Checksum (16 bits): Error-checking for the header.<br>Source IP Address (32 bits): IP address of the
+                    sender is 10.10.10.2.<br>Destination IP Address (32 bits): IP address of the intended recipient is
+                    192.168.0.3.<br>Options (variable): Optional and may include various information such as timestamp,
+                    record route, etc.<br>Data (Payload): Actual data being transmitted.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Okay</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Slanted line container -->
@@ -627,30 +879,69 @@
         <model-viewer src="laptop (3).glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
             poster="poster.webp" shadow-intensity="1" id="FileUploaderUser" onclick="changeModel('FileUploaderUser')">
 
-            <button class="Hotspot transparent-button" slot="hotspot-3"
+            <button class="Hotspot transparent-button btn" slot="hotspot-3"
                 data-position="10.066504518301514m 69.27750186888898m 718.4284188104473m"
                 data-normal="0m 0.4745439042365091m 0.8802318347753455m" data-visibility-attribute="visible"
-                onclick="alert('IP Address > 192.168.0.2')">
+                 data-bs-toggle="modal" data-bs-target="#Laptop3Modal">
                 <div class="HotspotAnnotation">Windows OS Laptop - File Uploader User</div>
             </button>
         </model-viewer>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Laptop3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Windows OS Laptop - File Uploader User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    IP Address > 192.168.0.2
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Okay</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Packet Details:\nSource IP Address: 192.168.0.2\nDestination IP Address: 10.10.10.2\nFile Size: '+ formatFileSize(file.size)) -->
+
+
 
     <model-viewer src="packet send.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp"
         shadow-intensity="1"
         style="width: 20%;height: 10%;margin-left: 75%;margin-top: -15px;display: none; z-index: 1;" id="sendFileModel">
-        <button class="Hotspot transparent-button" slot="hotspot-1"
+        <button class="Hotspot transparent-button btn" slot="hotspot-1"
             data-position="-0.01807796683813881m -0.13234383238683817m 0.15079345864210933m"
             data-normal="0m -2.220446049250313e-16m 1m" data-visibility-attribute="visible"
-            onclick="alert(
-            'Packet Details:\nVersion (4 bits): Indicates the version of the IP protocol (IPv4 or IPv6).\nIHL (4 bits): Internet Header Length, the number of 32-bit words in the header.\nType of Service (8 bits): Specifies the priority and ECN (Explicit Congestion Notification).\nTotal Length (16 bits): Total length of the IP packet (header + data).\nIdentification (16 bits): Used for fragmentation/reassembly of IP datagrams.\nFlags (3 bits): Control fragmentation (e.g., Don`t Fragment, More Fragments).\nFragment Offset (13 bits): Indicates the position of the fragment in the original datagram.\nTime to Live (8 bits): Limits the time the packet is allowed to traverse the network.\nProtocol (8 bits): Specifies the higher-layer protocol (e.g., TCP, UDP).\nHeader Checksum (16 bits): Error-checking for the header.\nSource IP Address (32 bits): IP address of the sender is 192.168.0.2.\nDestination IP Address (32 bits): IP address of the intended recipient is 10.10.10.2.\nOptions (variable): Optional and may include various information such as timestamp, record route, etc.\nData (Payload): Actual data being transmitted.')">
+            data-bs-toggle="modal" data-bs-target="#packetSendModal"
+           >
             <div class="HotspotAnnotation" id="fileName" style="font-size: smaller;">File</div>
         </button>
 
     </model-viewer>
 
-
+<!-- Modal -->
+<div class="modal fade" id="packetSendModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Packet Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+        </div>
+        <div class="modal-body">
+            Version (4 bits): Indicates the version of the IP protocol (IPv4 or IPv6).<br>IHL (4 bits): Internet Header Length, the number of 32-bit words in the header.<br>Type of Service (8 bits): Specifies the priority and ECN (Explicit Congestion Notification).<br>Total Length (16 bits): Total length of the IP packet (header + data).<br>Identification (16 bits): Used for fragmentation/reassembly of IP datagrams.<br>Flags (3 bits): Control fragmentation (e.g., Don`t Fragment, More Fragments).<br>Fragment Offset (13 bits): Indicates the position of the fragment in the original datagram.<br>Time to Live (8 bits): Limits the time the packet is allowed to traverse the network.<br>Protocol (8 bits): Specifies the higher-layer protocol (e.g., TCP, UDP).<br>Header Checksum (16 bits): Error-checking for the header.<br>Source IP Address (32 bits): IP address of the sender is 192.168.0.2.<br>Destination IP Address (32 bits): IP address of the intended recipient is 10.10.10.2.<br>Options (variable): Optional and may include various information such as timestamp, record route, etc.<br>Data (Payload): Actual data being transmitted.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Okay</button>
+       
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- Container for the first model viewer element with class 'model-viewer-container' -->
     <div class="model-viewer-container">
@@ -680,7 +971,7 @@
         <!-- End of model viewer container -->
 
         <!-- </div> -->
-       
+
 
 
 
@@ -726,10 +1017,29 @@
 
 
     <script>
-        // Use setTimeout to display an alert after 5 seconds
         setTimeout(function () {
-            alert("Let's Start Transferring File using FTP(File Tranfer Protocol) in AR World!! Click on FileZilla FTP Application. To Know IP Adresses of Network Devices click on their names.");
-        }, 3000); // 3000 milliseconds (3 seconds)
+      // Display the modal and overlay after 3 seconds
+      document.getElementById('customAlert').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }, 3000); // 3000 milliseconds (3 seconds)
+
+    // Close the modal and overlay when clicked
+    document.getElementById('overlay').addEventListener('click', function () {
+      document.getElementById('customAlert').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    });
+
+
+    function openModal() {
+      document.getElementById('customAlert').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('customAlert').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+
 
 
         // Function to handle the click event on the browser image
@@ -760,7 +1070,7 @@
 
                     // Update the content of the div with the file name
                     var fileNameElement = document.getElementById('RfileName');
-                    fileNameElement.innerHTML = file.name +' '+ formatFileSize(file.size);
+                    fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
 
                     // Start the animation on the #receiveFileModel element
                     var receiveFileModelElement = document.getElementById('receiveFileModel');
@@ -899,7 +1209,7 @@
 
             // Update the content of the div with the file name
             var fileNameElement = document.getElementById('fileName');
-            fileNameElement.innerHTML = file.name +' '+ formatFileSize(file.size);
+            fileNameElement.innerHTML = file.name + ' ' + formatFileSize(file.size);
 
             // Update the image source to the selected file
             var imgElement = document.getElementById('dragData');
@@ -1035,8 +1345,11 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
     <!-- Includes the Bootstrap JavaScript library from a CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 
 
