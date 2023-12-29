@@ -525,7 +525,9 @@
             <button class="Hotspot transparent-button btn" slot="hotspot-3"
                 data-position="10.066504518301514m 69.27750186888898m 718.4284188104473m"
                 data-normal="0m 0.4745439042365091m 0.8802318347753455m" data-visibility-attribute="visible"
-                data-bs-toggle="modal" data-bs-target="#laptop3IpAddress">
+                data-bs-toggle="modal" data-bs-target="#laptop3IpAddress"
+                
+                >
                 <!-- JavaScript function to display an alert on click -->
 
                 <!-- Div with class 'HotspotAnnotation' containing annotation text -->
@@ -918,6 +920,7 @@
             data-position="-0.01807796683813881m -0.13234383238683817m 0.15079345864210933m"
             data-normal="0m -2.220446049250313e-16m 1m" data-visibility-attribute="visible"
             data-bs-toggle="modal" data-bs-target="#packetSendModal"
+            
            >
             <div class="HotspotAnnotation" id="fileName" style="font-size: smaller;">File</div>
         </button>
@@ -1046,7 +1049,7 @@
         function handleBrowserImageClick() {
 
             // Prompt user for FTP Server IP Address
-            const userInput = prompt("Enter FTP Server IP Address connect to server:");
+            const userInput = prompt("Enter FTP Server IP Address(ftp://10.10.10.2) connect to server:");
 
             // Check if user input is not null and matches the expected FTP Server IP Address
             if (userInput !== null && userInput == 'ftp://10.10.10.2') {
@@ -1231,7 +1234,7 @@
         // Add click event listener to the FilezillaUiModel element
         FilezillaUiModel.addEventListener("click", () => {
             // Prompt user for Server IP Address to connect to FTP server
-            const userInput = prompt("Enter Server IP Address connect to FTP server:");
+            const userInput = prompt("Enter Server IP Address connect(ftp://10.10.10.2) to FTP server:");
 
             // Check if user input is not null and matches the expected FTP Server IP Address
             if (userInput !== null && userInput == 'ftp://10.10.10.2') {
